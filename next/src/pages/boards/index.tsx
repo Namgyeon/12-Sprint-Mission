@@ -27,7 +27,6 @@ export default function Page({
       <Head>
         <title>판다마켓-게시글</title>
       </Head>
-      <MainHeader />
       <div className={styles.container}>
         <BestPosts initialBestPosts={initialBestPosts} />
         <AllPosts initialAllPosts={initialAllPosts} />

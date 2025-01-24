@@ -46,6 +46,7 @@ export default function AllPosts({ initialAllPosts }: AllPostProps) {
           placeholder="검색할 상품의 내용을 입력해주세요"
           onChange={setSearchValue}
           onEnter={() => {}}
+          withImage={true}
         />
         <ToggleBtn onChangeOrderBy={onChangeOrderBy} orderBy={orderBy} />
       </div>
