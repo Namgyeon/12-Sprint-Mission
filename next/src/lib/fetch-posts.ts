@@ -20,7 +20,7 @@ export default async function fetchPosts({
     if (!response.ok) {
       throw new Error(`Failed to fetch, ${response.statusText}`);
     }
-    const data: Posts = await response.json();
+    const data: Posts<Post> = await response.json();
     return data.list;
   } catch (err) {
     throw new Error(`FetchPosts Error: ${(err as Error).message}`);

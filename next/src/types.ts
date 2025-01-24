@@ -12,8 +12,8 @@ export interface Post {
   };
 }
 
-export interface Posts {
-  list: Post[];
+export interface Posts<T> {
+  list: T[];
   totalCount: number;
 }
 
