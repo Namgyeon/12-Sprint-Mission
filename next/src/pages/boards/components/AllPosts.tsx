@@ -12,7 +12,7 @@ interface AllPostProps {
 }
 
 export default function AllPosts({ initialAllPosts }: AllPostProps) {
-  const [postList, setPostList] = useState<Post[]>(initialAllPosts);
+  const [posts, setPosts] = useState<Post[]>(initialAllPosts);
   const [orderBy, setOrderBy] = useState<OrderByValue>("recent");
   const [searchValue, setSearchValue] = useState<string>("");
 
@@ -23,12 +23,12 @@ export default function AllPosts({ initialAllPosts }: AllPostProps) {
   useEffect(() => {
     const fetchOrderByPost = async () => {
       const posts = await fetchPosts({ orderBy: orderBy, pageSize: 4 });
-      setPostList(posts);
+      setPosts(posts);
     };
     fetchOrderByPost();
   }, [orderBy]);
 
-  const filteredPosts = postList.filter((post) =>
+  const filteredPosts = posts.filter((post) =>
     post.content!.includes(searchValue)
   );
 
