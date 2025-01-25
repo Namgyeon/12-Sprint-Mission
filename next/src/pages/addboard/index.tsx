@@ -1,3 +1,5 @@
+import ContentSection from "./components/ContentSection";
+import ImageSection from "./components/ImageSection";
 import TitleSection from "./components/TitleSection";
 import styles from "./index.module.css";
 
@@ -10,6 +12,8 @@ export default function page() {
       </div>
       <form action="" className={styles.form}>
         <TitleSection />
+        <ContentSection />
+        <ImageSection />
       </form>
     </div>
   );

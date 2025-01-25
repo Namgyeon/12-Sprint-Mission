@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function TitleSection() {
   const [value, setValue] = useState("");
   const onChange = () => {};
+
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>*제목</h2>

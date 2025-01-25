@@ -25,7 +25,7 @@ export default function Input({
     }
   };
 
-  const inputClassName = clsx(className, styles.input, {
+  const inputClassName = clsx(styles.input, className, {
     [styles["inputWithImage"]]: withImage,
   });
 
