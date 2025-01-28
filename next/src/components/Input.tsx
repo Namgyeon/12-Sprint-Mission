@@ -4,7 +4,7 @@ import clsx from "clsx";
 type InputProps = {
   value: string;
   placeholder: string;
-  onChange: (value: string) => void;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
   onEnter?: () => void;
   withImage?: boolean;
   className?: string;
@@ -34,7 +34,7 @@ export default function Input({
       className={inputClassName}
       value={value}
       placeholder={placeholder}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={onChange}
       onKeyDown={handleKeyDown}
       {...rest}
     />

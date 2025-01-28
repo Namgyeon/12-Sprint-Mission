@@ -1,12 +1,15 @@
-import { useState } from "react";
 import styles from "./ImageSection.module.css";
 import Image from "next/image";
 
-export default function ImageSection() {
-  const [image, setImage] = useState<string | null>(null);
+type ImageSectionProps = {
+  image: string | null;
+  setImage: (file: string | null) => void;
+};
 
+export default function ImageSection({ image, setImage }: ImageSectionProps) {
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]; // 첫번째 파일만 가져옴.(1개)
+
     if (file) {
       const reader = new FileReader(); // FileReader 브라우저에서 파일을 읽는데 사용되는 기본 API.
       reader.onloadend = () => {
@@ -16,6 +19,7 @@ export default function ImageSection() {
     }
   };
 
+  //사이트 이펙트?
   const handleImageDelete = (e: React.MouseEvent<HTMLImageElement>) => {
     setImage(null);
     e.preventDefault();
