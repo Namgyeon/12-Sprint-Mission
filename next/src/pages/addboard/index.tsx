@@ -11,7 +11,7 @@ export default function Page() {
   const [image, setImage] = useState<string | null>(null);
   const [deactivate, setDeactivate] = useState(true);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData();

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import ToggleBtn from "../../../components/ToggleBtn";
 import Link from "next/link";
 import { OrderByValue, Post } from "../../../types";
-import fetchPosts from "@/lib/fetch-posts";
+import getArticles from "@/lib/get-articles";
 
 interface AllPostProps {
   initialAllPosts: Post[];
@@ -22,7 +22,7 @@ export default function AllPosts({ initialAllPosts }: AllPostProps) {
 
   useEffect(() => {
     const fetchOrderByPost = async () => {
-      const posts = await fetchPosts({ orderBy: orderBy, pageSize: 4 });
+      const posts = await getArticles({ orderBy: orderBy, pageSize: 4 });
       setPosts(posts);
     };
     fetchOrderByPost();

@@ -1,7 +1,7 @@
 import { baseURL } from "@/constants";
 import { Post, Posts } from "../types";
 
-export default async function fetchPosts({
+export default async function getArticles({
   page = "1",
   pageSize = 3,
   orderBy = "recent",

@@ -1,14 +1,19 @@
 import styles from "./index.module.css";
-import MainHeader from "../../components/MainHeader";
 import BestPosts from "./components/BestPosts";
 import AllPosts from "./components/AllPosts";
 import Head from "next/head";
-import fetchPosts from "@/lib/fetch-posts";
+import getArticles from "@/lib/get-articles";
 import { InferGetServerSidePropsType } from "next";
 
 export const getServerSideProps = async () => {
-  const initialBestPosts = await fetchPosts({ orderBy: "like", pageSize: 3 });
-  const initialAllPosts = await fetchPosts({ orderBy: "recent", pageSize: 4 });
+  const initialBestPosts = await getArticles({
+    orderBy: "like",
+    pageSize: 3,
+  });
+  const initialAllPosts = await getArticles({
+    orderBy: "recent",
+    pageSize: 4,
+  });
 
   return {
     props: {
