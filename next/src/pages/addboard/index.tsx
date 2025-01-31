@@ -6,27 +6,27 @@ import styles from "./index.module.css";
 import createArticles from "@/lib/create-articles";
 
 export default function Page() {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [image, setImage] = useState<string | null>(null);
-  const [deactivate, setDeactivate] = useState(true);
+  const [values, setValues] = useState({
+    title: "",
+    content: "",
+    image: null as File | null,
+  });
+  const [isDisabled, setIsDisabled] = useState(true);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append("title", title);
-    formData.append("content", content);
-    if (image) {
-      formData.append("image", image);
+    formData.append("title", values.title);
+    formData.append("content", values.content);
+    if (values.image) {
+      formData.append("image", values.image);
     }
 
     try {
       await createArticles(formData);
       // 상태 초기화
-      setTitle("");
-      setContent("");
-      setImage(null);
+      setValues({ title: "", content: "", image: null });
       alert("게시글이 성공적으로 등록되었습니다!");
     } catch (error) {
       console.error("게시글 등록 실패:", error);
@@ -35,22 +35,29 @@ export default function Page() {
   };
 
   useEffect(() => {
-    if (title && content) {
-      setDeactivate(false);
-    }
-  }, [title, content, image]);
+    setIsDisabled(!values.title || !values.content);
+  }, [values.title, values.content]);
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.head}>
           <h1 className={styles.title}>게시글 쓰기</h1>
-          <button disabled={deactivate} type="submit" className={styles.button}>
+          <button disabled={isDisabled} type="submit" className={styles.button}>
             등록
           </button>
         </div>
-        <TitleSection title={title} setTitle={setTitle} />
-        <ContentSection content={content} setContent={setContent} />
-        <ImageSection image={image} setImage={setImage} />
+        <TitleSection
+          title={values.title}
+          setTitle={(title) => setValues((prev) => ({ ...prev, title }))}
+        />
+        <ContentSection
+          content={values.content}
+          setContent={(content) => setValues((prev) => ({ ...prev, content }))}
+        />
+        <ImageSection
+          image={values.image}
+          setImage={(image) => setValues((prev) => ({ ...prev, image }))}
+        />
       </form>
     </div>
   );

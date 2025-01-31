@@ -28,5 +28,10 @@
   font-weight: 600;
   font-size: 16px;
   color: #f3f4f6;
+  background-color: #3692ff;
+  cursor: pointer;
+}
+
+.btn:disabled {
   background-color: #9ca3af;
 }

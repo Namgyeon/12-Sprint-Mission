@@ -7,10 +7,6 @@ type TitleSectionProps = {
 };
 
 export default function TitleSection({ title, setTitle }: TitleSectionProps) {
-  const onChangeTitle = (value: string) => {
-    setTitle(value);
-  };
-
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>*제목</h2>
@@ -18,7 +14,7 @@ export default function TitleSection({ title, setTitle }: TitleSectionProps) {
         className={styles.titleInput}
         value={title}
         placeholder="제목을 입력해주세요"
-        onChange={(e) => onChangeTitle(e.target.value)}
+        onChange={(e) => setTitle(e.target.value)}
         withImage={false}
       />
     </div>

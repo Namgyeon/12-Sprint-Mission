@@ -44,7 +44,7 @@ export default function AllPosts({ initialAllPosts }: AllPostProps) {
         <Input
           value={searchValue}
           placeholder="검색할 상품의 내용을 입력해주세요"
-          onChange={setSearchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
           onEnter={() => {}}
           withImage={true}
         />

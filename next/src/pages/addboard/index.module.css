@@ -28,6 +28,10 @@
   cursor: pointer;
 }
 
+.button:disabled {
+  background-color: #9ca3af;
+}
+
 .form {
   display: flex;
   flex-direction: column;

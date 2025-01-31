@@ -2,20 +2,15 @@ import styles from "./ImageSection.module.css";
 import Image from "next/image";
 
 type ImageSectionProps = {
-  image: string | null;
-  setImage: (file: string | null) => void;
+  image: File | null;
+  setImage: (file: File | null) => void;
 };
 
 export default function ImageSection({ image, setImage }: ImageSectionProps) {
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]; // 첫번째 파일만 가져옴.(1개)
-
     if (file) {
-      const reader = new FileReader(); // FileReader 브라우저에서 파일을 읽는데 사용되는 기본 API.
-      reader.onloadend = () => {
-        setImage(reader.result as string);
-      };
-      reader.readAsDataURL(file); // 파일 데이터를 Base64로 변환.
+      setImage(file);
     }
   };
 
@@ -33,7 +28,7 @@ export default function ImageSection({ image, setImage }: ImageSectionProps) {
           {image ? (
             <div className={styles.imageContainer}>
               <Image
-                src={image}
+                src={URL.createObjectURL(image)}
                 alt="상품이미지 미리보기"
                 width={282}
                 height={282}

@@ -4,7 +4,7 @@ import clsx from "clsx";
 type InputProps = {
   value: string;
   placeholder: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onEnter?: () => void;
   withImage?: boolean;
   className?: string;
