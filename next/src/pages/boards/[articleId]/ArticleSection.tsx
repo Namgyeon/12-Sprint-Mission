@@ -1,32 +1,13 @@
 import styles from "./ArticleSection.module.css";
-import getArticle from "@/lib/get-article";
 import { Article } from "@/types";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import formatDate from "@/utils/date";
 
 type ArticleSectionProps = {
-  articleId: number;
+  article: Article;
 };
 
-export default function ArticleSection({ articleId }: ArticleSectionProps) {
-  const [article, setArticle] = useState<Article | null>(null);
-
-  useEffect(() => {
-    if (!articleId) return;
-
-    const fetchData = async () => {
-      try {
-        const data = await getArticle(articleId);
-        setArticle(data);
-        console.log(article);
-      } catch (err) {
-        console.error("failed to fetch article", err);
-      }
-    };
-    fetchData();
-  }, [articleId]);
-
+export default function ArticleSection({ article }: ArticleSectionProps) {
   if (!article) {
     return <div>로딩 중...</div>;
   }
