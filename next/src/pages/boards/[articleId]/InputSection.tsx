@@ -1,22 +1,17 @@
 import styles from "./InputSection.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import createComment from "@/lib/create-comment";
-import { useRouter } from "next/router";
 
-export default function InputSection() {
+type InputSectionProps = {
+  articleId: number;
+};
+
+export default function InputSection({ articleId }: InputSectionProps) {
   const [comment, setComment] = useState<string>("");
-  const [articleId, setArticleId] = useState<number | null>(null);
-  const router = useRouter();
 
   const onChangeComment = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setComment(e.target.value);
   };
-
-  useEffect(() => {
-    if (router.query.articleId) {
-      setArticleId(Number(router.query.articleId));
-    }
-  }, [router.query.articleId]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
