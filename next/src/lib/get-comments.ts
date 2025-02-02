@@ -19,7 +19,6 @@ export default async function getComments(
     const data: Comments<Comment> = await response.json();
     return data.list;
   } catch (err) {
-    console.error("댓글 가져오기 실패:", err);
-    return [];
+    throw new Error(`FetchComments Error: ${(err as Error).message}`);
   }
 }

@@ -12,6 +12,6 @@ export default async function getArticle(articleId: number): Promise<Article> {
     const data: Article = await response.json();
     return data;
   } catch (err) {
-    throw new Error(`FetchPosts Error: ${(err as Error).message}`);
+    throw new Error(`FetchPost Error: ${(err as Error).message}`);
   }
 }
