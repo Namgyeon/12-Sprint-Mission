@@ -2,20 +2,22 @@ import styles from "./Input.module.css";
 import clsx from "clsx";
 
 type InputProps = {
+  name?: string;
   value: string;
   placeholder: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onEnter?: () => void;
-  withImage?: boolean;
+  withSearch?: boolean;
   className?: string;
 };
 
 export default function Input({
+  name,
   value,
   placeholder,
   onChange,
   onEnter,
-  withImage,
+  withSearch,
   className,
   ...rest
 }: InputProps) {
@@ -26,11 +28,12 @@ export default function Input({
   };
 
   const inputClassName = clsx(styles.input, className, {
-    [styles["inputWithImage"]]: withImage,
+    [styles["inputWithSearch"]]: withSearch,
   });
 
   return (
     <input
+      name={name}
       className={inputClassName}
       value={value}
       placeholder={placeholder}

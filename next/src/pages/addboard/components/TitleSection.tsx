@@ -15,7 +15,7 @@ export default function TitleSection({ title, setTitle }: TitleSectionProps) {
         value={title}
         placeholder="제목을 입력해주세요"
         onChange={(e) => setTitle(e.target.value)}
-        withImage={false}
+        withSearch={false}
       />
     </div>
   );
